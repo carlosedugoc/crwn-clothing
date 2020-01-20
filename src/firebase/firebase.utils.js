@@ -13,8 +13,9 @@ const config = {
     measurementId: "G-V8YSBG116K"
 };
 
-export const createUserProfileDocumet = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
+    debugger;
     const userRef = firestore.doc(`users/${userAuth.uid}`);
     const snapshot = await userRef.get();
     if (!snapshot.exists) {
@@ -31,9 +32,8 @@ export const createUserProfileDocumet = async (userAuth, additionalData) => {
         } catch (error) {
             console.log('error creating user', error);
         }
-
-        return userRef;
     }
+    return userRef;
 };
 
 firebase.initializeApp(config);
